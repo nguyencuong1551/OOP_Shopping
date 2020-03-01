@@ -64,8 +64,8 @@ if (isset($_POST['submit']))
                 setcookie('idUser', $getId, time() + 3000);
                 header("location:index.php");
             }
-        }else echo"Nhập sai email hoặc password";
-    } else echo "Không được để trống user & pass";
+        }else return $error = "<p class='alert alert-danger'>Nhập sai email hoặc password</p>";
+    } else echo "<p class='alert alert-danger'>Không được để trống user & pass</p>";
 }
 ?>
 </body>
