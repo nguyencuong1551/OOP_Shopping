@@ -48,24 +48,27 @@ include "header.php";
             <div class="row col-auto">
                 <?php
                 // Tổng số bản ghi trong 1 trang và tính tổng số trang
-
+                $data->select("SELECT COUNT(id) AS total FROM categories");
+                $totalRow = $data->fetch();
+                $totalCategory = $totalRow['total'];
                 $getIdCategory = addslashes($_GET['id']);
-                $number_page = $data->number_page("SELECT COUNT(id) AS total FROM products WHERE id_category = '$getIdCategory'", 8);
-                // Trang hiện tại
-                $current_page = $data->checkCurrent_page("SELECT COUNT(id) AS total FROM products WHERE id_category ='$getIdCategory'",8);
-                // Xác định bản ghi đầu tiên của trang
-                $start = $data->countStart("SELECT COUNT(id) AS total FROM products WHERE id_category = '$getIdCategory'",8);
-                if (isset($getId) && $data->checkNumber($getIdCategory) && $data->checkNull($getIdCategory))
-                { //truy vấn và hiển thị nội dung của trang
-                    $data->select("SELECT * FROM products WHERE id_category = '$getIdCategory' LIMIT $start, 8");
-                    while ($getProduct = $data->fetch())
-                    {
-                        $getId = $getProduct['id'];
-                        $getName = $getProduct['name'];
-                        $getImage = $getProduct['image'];
-                        $getUnit_price = $getProduct['unit_price'];
-                        $getPromotion_price = $getProduct['promotion_price'];
-                        echo "<div class=\"col-3\">
+                if ($getIdCategory > 0 && $getIdCategory <= $totalCategory) {
+                    $getIdCategory = addslashes($_GET['id']);
+                }else $getIdCategory = 1;
+                    $number_page = $data->number_page("SELECT COUNT(id) AS total FROM products WHERE id_category = '$getIdCategory'", 8);
+                    // Trang hiện tại
+                    $current_page = $data->checkCurrent_page("SELECT COUNT(id) AS total FROM products WHERE id_category ='$getIdCategory'", 8);
+                    // Xác định bản ghi đầu tiên của trang
+                    $start = $data->countStart("SELECT COUNT(id) AS total FROM products WHERE id_category = '$getIdCategory'", 8);
+                    if (isset($getId) && $data->checkNumber($getIdCategory) && $data->checkNull($getIdCategory)) { //truy vấn và hiển thị nội dung của trang
+                        $data->select("SELECT * FROM products WHERE id_category = '$getIdCategory' LIMIT $start, 8");
+                        while ($getProduct = $data->fetch()) {
+                            $getId = $getProduct['id'];
+                            $getName = $getProduct['name'];
+                            $getImage = $getProduct['image'];
+                            $getUnit_price = $getProduct['unit_price'];
+                            $getPromotion_price = $getProduct['promotion_price'];
+                            echo "<div class=\"col-3\">
                         <div class=\"card flex-row mb-2 shadow-sm h-md-150\">
                             <div class=\"card-body d-flex flex-column align-items-start\">
                                 <center><a href=\"\"><img
@@ -78,7 +81,7 @@ include "header.php";
                                 <br>
                                 <p>
                                     <a class=\"btn btn-outline-dark mb-1\"
-                                       href=\"#\">Thông tin &raquo</a>
+                                       href=\"detailProduct.php?id=$getId\">Thông tin &raquo</a>
                                     <a class=\"btn btn-outline-dark mb-1\"
                                        href=\"#\">
                                         <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"38\" height=\"23\"
@@ -90,8 +93,8 @@ include "header.php";
                             </div>
                         </div>
                         </div>";
+                        }
                     }
-                }
                 ?>
             </div>
             <hr class="featurette-divider">

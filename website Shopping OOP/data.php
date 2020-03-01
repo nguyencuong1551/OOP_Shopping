@@ -24,6 +24,11 @@ class databaseShopping
         }else $rows = 0;
         return $rows;
     }
+    public function crud($sql)
+    {
+        $this->connect();
+        $this->conn->query($sql);
+    }
     public function checkNull($check)
     {
         if (!empty($check))
@@ -63,12 +68,5 @@ class databaseShopping
     {
         $start = ($this->checkCurrent_page($sqlCountRecord, $limit)-1)*$limit;
         return $start;
-    }
-    public function link($sqlCountRecord, $limit)
-    {
-        $current_page = $this->checkCurrent_page($sqlCountRecord, $limit);
-        $number_page = $this->number_page($sqlCountRecord, $limit);
-        // Nút Prev
-
     }
 }
