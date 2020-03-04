@@ -69,4 +69,11 @@ class databaseShopping
         $start = ($this->checkCurrent_page($sqlCountRecord, $limit)-1)*$limit;
         return $start;
     }
+    public function count($sqlCountRecord)
+    {
+        $this->select($sqlCountRecord);
+        $count =  $this->fetch();
+        $countProduct = $count['total'];
+        return $countProduct;
+    }
 }

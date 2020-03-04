@@ -52,16 +52,19 @@ if (isset($_POST['submit']))
         if ($getUser) {
             $getName = $getUser['name'];
             $getRole = $getUser['role'];
+            $getEmail = $getUser['email'];
             $getId = $getUser['id'];
             if ($getRole == 'admin') {
                 setcookie('nameUser', $getName, time() + 3000);
                 setcookie('roleUser', $getRole, time() + 3000);
+                setcookie('emailUser', $getEmail, time() + 3000);
                 setcookie('idUser', $getId, time() + 3000);
                 header("location:../Admin/admin.php");
             } else {
                 setcookie('nameUser', $getName, time() + 3000);
                 setcookie('roleUser', $getRole, time() + 3000);
                 setcookie('idUser', $getId, time() + 3000);
+                setcookie('emailUser', $getEmail, time() + 3000);
                 header("location:index.php");
             }
         }else return $error = "<p class='alert alert-danger'>Nhập sai email hoặc password</p>";
