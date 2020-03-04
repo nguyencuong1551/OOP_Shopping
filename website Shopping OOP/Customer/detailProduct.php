@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "../data.php";
 $data = new databaseShopping();
 ?>
@@ -138,16 +139,14 @@ $data = new databaseShopping();
 </head>
 <body>
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="index.php">Company name</a>
-    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="index.php">Shopping</a>
     <?php
     $getUser_name = $_COOKIE['nameUser'];
     $getUser_id = $_COOKIE['idUser'];
     $getUser_role = $_COOKIE['roleUser'];
     if(isset($getUser_id))
     {
-        if($getUser_role == 'admin')  // hàm isset chỉ là hàm check tồm tại chứ không phải biến;
+        if($getUser_role == 'admin')  // hàm isset chỉ là hàm check tồn tại chứ không phải biến;
         {
             echo "
              <ul class=\"navbar-nav px-3\">
