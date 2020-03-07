@@ -41,6 +41,10 @@ include "header.php";
                 </a>
             </div>
             <hr class="featurette-divider">
+            <?php if (isset($_SESSION['status'])):?>
+                <center><p class="alert alert-info"><?= $_SESSION['status']  ?></p></center>
+            <?php endif; unset($_SESSION['status']) ?>
+
             <div id="showCategoryProduct">
                 <div class="row col-auto">
                     <?php

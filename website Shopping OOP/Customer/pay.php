@@ -2,8 +2,7 @@
 include "../data.php";
 $data = new databaseShopping();
 session_start();
-$cart = implode(',', $_SESSION['cart']);
-$countCart = count($_SESSION['cart']);
+ob_start();
 ?>
 <!doctype html>
 <html lang="en">
@@ -125,36 +124,55 @@ $countCart = count($_SESSION['cart']);
         <div class="row">
             <div class="col-md-4 order-md-2 mb-4">
                 <h4 class="d-flex justify-content-between align-items-center mb-3">
-                    <span class="text-muted">Sản phẩm</span>
+                    <?php
+                    if (isset($_SESSION['status']))
+                    {
+                        $status = $_SESSION['status'];
+                        echo " <center><p class=\"alert alert-info\">$status</p></center>";
+                        unset($_SESSION['status']);
+                    }else echo " <span class=\"text-muted\">Sản phẩm</span>";
+                    ?>
                     <span class="badge badge-secondary badge-pill">
-                        <a href='deleteCheckout.php?id=$getId' class='text-dark'>X</a>
+                        <span class="badge badge-secondary badge-pill"><svg width="25" height="25"
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                            fill-rule="evenodd" clip-rule="evenodd"><path
+                                        d="M7 24h-5v-9h5v1.735c.638-.198 1.322-.495 1.765-.689.642-.28 1.259-.417 1.887-.417 1.214 0 2.205.499 4.303 1.205.64.214 1.076.716 1.175 1.306 1.124-.863 2.92-2.257 2.937-2.27.357-.284.773-.434 1.2-.434.952 0 1.751.763 1.751 1.708 0 .49-.219.977-.627 1.356-1.378 1.28-2.445 2.233-3.387 3.074-.56.501-1.066.952-1.548 1.393-.749.687-1.518 1.006-2.421 1.006-.405 0-.832-.065-1.308-.2-2.773-.783-4.484-1.036-5.727-1.105v1.332zm-1-8h-3v7h3v-7zm1 5.664c2.092.118 4.405.696 5.999 1.147.817.231 1.761.354 2.782-.581 1.279-1.172 2.722-2.413 4.929-4.463.824-.765-.178-1.783-1.022-1.113 0 0-2.961 2.299-3.689 2.843-.379.285-.695.519-1.148.519-.107 0-.223-.013-.349-.042-.655-.151-1.883-.425-2.755-.701-.575-.183-.371-.993.268-.858.447.093 1.594.35 2.201.52 1.017.281 1.276-.867.422-1.152-.562-.19-.537-.198-1.889-.665-1.301-.451-2.214-.753-3.585-.156-.639.278-1.432.616-2.164.814v3.888zm3.79-19.913l3.21-1.751 7 3.86v7.677l-7 3.735-7-3.735v-7.719l3.784-2.064.002-.005.004.002zm2.71 6.015l-5.5-2.864v6.035l5.5 2.935v-6.106zm1 .001v6.105l5.5-2.935v-6l-5.5 2.83zm1.77-2.035l-5.47-2.848-2.202 1.202 5.404 2.813 2.268-1.167zm-4.412-3.425l5.501 2.864 2.042-1.051-5.404-2.979-2.139 1.166z"/></svg></span>
                     </span>
                 </h4>
                 <ul class="list-group mb-3">
                     <?php
-                    $data->select("SELECT * FROM products WHERE id IN ($cart)");
-                    while ($getProduct =  $data->fetch()) {
-                        $getId = $getProduct['id'];
-                        $getName = $getProduct['name'];
-                        $getImage = $getProduct['image'];
-                        $getUnit_price = $getProduct['unit_price'];
-                        $getPromotion_price = $getProduct['promotion_price'];
-                        echo "<li class=\"list-group-item d-flex justify-content-between bg-light\">
-                        <div>
-                            <p><strong class=\"my-0\">$getName</strong></p>                          
-                        </div>
-                    </li>
-                     <li class=\"list-group-item d-flex justify-content-between bg-light\">
-                        <div class=\"text-success\">
-                            <h6 class=\"my-0\">Giá:</h6>
-                        </div>
-                        <span class=\"text-success\">$getUnit_price $</span>
-                    </li>
-                    ";
-                    }
+                    $countCart = count($_SESSION['cart']);
+                    $cart = $_SESSION['cart'];
                     ?>
-                </ul>
+                    <?php foreach ($cart as $key=>$value): ?>
+                            <li class="list-group-item d-flex justify-content-between bg-light">
+                                <div>
+                                    <p><strong class="my-0"><?= $value['name'] ?></strong></p>
+                                    <p><span class="my-0">Số lượng: <?= $value['qty'] ?></span></p>
+                                </div>
+                                <div>
+                                    <a class="btn btn-success" href="updateCheckout.php?key=<?=$key?>&value=<?= $value['qty']?>"><center>Edit</center></a>
+                                    <a class="btn btn-danger" href="deleteCheckout.php?key=<?=$key?>"><center>X</center></a>
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between bg-light">
+                                <div class="text-success">
+                                    <h6 class="my-0">Giá:</h6>
+                                </div>
+                                <span class="text-success"><?= $value['unit_price']*$value['qty'] ?> $</span>
+                            </li>
+                        <?php
+                            $total += $value['qty']*$value['unit_price'];
+                        ?>
+                        <?php endforeach;?>
 
+                </ul>
+                <li class="list-group-item d-flex justify-content-between bg-light">
+                    <div class="text-danger">
+                        <h6 class="my-0">Tổng Tiền:</h6>
+                    </div>
+                    <span class="text-danger"><?= $total ?> $</span>
+                </li>
             </div>
             <div class="col-md-8 order-md-1">
                 <h3 class=" mb-3">Thông tin hóa đơn
@@ -201,44 +219,7 @@ $countCart = count($_SESSION['cart']);
                     <input name="address" type="text" class="form-control" id="firstName" placeholder="... " value=""
                            required>
                 </div>
-                <div class="row">
-                    <?php
-                        $data->select("SELECT * FROM products WHERE id IN ($cart)");
-                        while ($getProduct = $data->fetch())
-                        {
-                            $getId = $getProduct['id'];
-                            $getName = $getProduct['name'];
-                            $getImage = $getProduct['image'];
-                            $getUnit_price = $getProduct['unit_price'];
-                            $getPromotion_price = $getProduct['promotion_price'];
-                            echo "
-                            <div class=\"col-md-7 mb-3\">
-                        <label for=\"firstName\">Tên sản phẩm</label>
-                        <input name=\"nameSP\" type=\"text\" class=\"text-danger form-control\"
-                               value=\"$getName\" required
-                               readonly>
-                        <div class=\"invalid-feedback\">
-                            Valid first name is required.
-                        </div>
-                    </div>
-                    <div class=\"col-md-2 mb-3\">
-                        <label for=\"lastName\">Số lượng</label>
-                        <input type=\"number\" name=\"quantity\" class=\"text-danger form-control\" min=\"1\" max=\"5\" value=\"1\">
-                        <div class=\"invalid-feedback\">
-                            Valid last name is required.
-                        </div>
-                    </div>
-                    <div class=\"col-md-3 mb-3\">
-                        <label for=\"lastName\">Đơn giá</label>
-                        <input name=\"promotion_price\" type=\"text\" class=\"text-danger form-control\"
-                               value=\"$getPromotion_price $\" required readonly>
-                        <div class=\"invalid-feedback\">
-                            Valid last name is required.
-                        </div>
-                    </div>";
-                        }
-                    ?>
-                </div>
+
 
                 <hr class="mb-4">
                 <div class="row">
@@ -268,31 +249,36 @@ $countCart = count($_SESSION['cart']);
                     </div>
                 </div>
                 <hr class="mb-4">
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Đặt Hàng</button>
+                <?php if (isset($_SESSION['cart'])):?>
+                <input class="btn btn-primary btn-lg btn-block" type="submit" name="pay" value="Đặt Hàng">
+                <?php endif; ?>
             </div>
         </div>
     </form>
     <?php
-    if (isset($_POST['submit']))
-    {
-        $getCustomer_name = $_POST['name'];
-        $getCustomer_email = $_POST['email'];
-        $getCustomer_phone = $_POST['phone'];
-        $getCustomer_address = $_POST['address'];
-        $getCustomer_nameSP = $_POST['nameSP'];
-        $getCustomer_quantity = $_POST['quantity'];
-        $getCustomer_promotion = $_POST['promotion_price'];
-        $getCustomer_note = $_POST['note'];
-        $getCustomer_payment = $_POST['payment'];
-        if ($data->checkNull($getCustomer_name) && $data->checkNull($getCustomer_email) && $data->checkNull($getCustomer_phone) &&
-            $data->checkNull($getCustomer_nameSP) && $data->checkNull($getCustomer_promotion) &&
-            $data->checkNull($getCustomer_quantity) && $data->checkNull($getCustomer_payment))
+        if (isset($_POST['pay']))
         {
-            $data->crud("INSERT INTO bills VALUES
+           if ($data->checkNull($_POST['name']))
+              {
+                  foreach ($_SESSION['cart'] as $key=>$value) {
+                  $getCustomer_name = $_POST['name'];
+                  $getCustomer_email = $_POST['email'];
+                  $getCustomer_phone = $_POST['phone'];
+                  $getCustomer_address = $_POST['address'];
+                  $getCustomer_note = $_POST['note'];
+                  $getCustomer_payment = $_POST['payment'];
+                      $name = $value['name'];
+                      $quantity = $value['qty'];
+                      $unit_price = $value['unit_price'];
+                      $data->crud("INSERT INTO bills VALUES
  (null, '$getCustomer_name', '$getCustomer_phone', '$getCustomer_address', '$getCustomer_email', '$getCustomer_payment'
- ,'$getCustomer_nameSP','$getCustomer_promotion','$getCustomer_note', null,'$getCustomer_quantity', current_timestamp(), current_timestamp())");
-        }else echo "Không đc để trống";
-    }
+ ,'$name' ,'$unit_price' ,'$getCustomer_note', null,'$quantity' , current_timestamp(), current_timestamp())");
+                  }
+              }
+            $_SESSION['status']  = "Đã đặt hàng thành công";
+            unset($_SESSION['cart']);
+            header("location:index.php");
+        }
     ?>
 </div>
 
