@@ -59,7 +59,7 @@ if (isset($_POST['submit']))
                 setcookie('roleUser', $getRole, time() + 3000);
                 setcookie('emailUser', $getEmail, time() + 3000);
                 setcookie('idUser', $getId, time() + 3000);
-                header("location:../Admin/admin.php");
+                header("location:../Admin/admin.php?controller=home&action=countAll");
             } else {
                 setcookie('nameUser', $getName, time() + 3000);
                 setcookie('roleUser', $getRole, time() + 3000);

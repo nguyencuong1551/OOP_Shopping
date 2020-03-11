@@ -75,7 +75,7 @@ session_start()
             echo "
              <ul class=\"navbar-nav px-3\">
             <li class=\"nav-item text-nowrap\">
-                        <a class=\"nav-link\" href=\"../Admin/admin.php\">$getUser_name</a>
+                        <a class=\"nav-link\" href=\"../Admin/admin.php?controller=home&action=countAll\">$getUser_name</a>
                     </li>
                     </ul>
                      <ul class=\"navbar-nav px-3\">
