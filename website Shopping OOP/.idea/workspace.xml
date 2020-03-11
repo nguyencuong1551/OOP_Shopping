@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b24f15fc-08f6-42b7-9ee1-182b3b07616e" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.2" />
+  <component name="ProjectId" id="1YynkEoOzIaN8NjgIjyhokPqVIy" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b24f15fc-08f6-42b7-9ee1-182b3b07616e" name="Default Changelist" comment="" />
+      <created>1583923842599</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1583923842599</updated>
+      <workItem from="1583923844080" duration="1775000" />
+      <workItem from="1583925692900" duration="1035000" />
+      <workItem from="1583939994321" duration="3078000" />
+      <workItem from="1583943104282" duration="2185000" />
+      <workItem from="1583945319928" duration="78000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="338" y="27" width="680" height="741" key="#PHP" timestamp="1583924114015">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="338" y="27" width="680" height="741" key="#PHP/0.27.1366.741@0.27.1366.741" timestamp="1583924114015" />
+    <state x="466" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1583945583930">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="466" y="154" width="424" height="484" key="FileChooserDialogImpl/0.27.1366.741@0.27.1366.741" timestamp="1583945583930" />
+    <state x="478" y="318" width="399" height="157" key="NewPhpFileDialog" timestamp="1583940792397">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="478" y="318" width="399" height="157" key="NewPhpFileDialog/0.27.1366.741@0.27.1366.741" timestamp="1583940792397" />
+    <state x="172" y="31" key="SettingsEditor" timestamp="1583943049267">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="172" y="31" key="SettingsEditor/0.27.1366.741@0.27.1366.741" timestamp="1583943049267" />
+    <state x="337" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1583945427652">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="337" y="224" key="com.intellij.ide.util.TipDialog/0.27.1366.741@0.27.1366.741" timestamp="1583945427652" />
+  </component>
+</project>
