@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b24f15fc-08f6-42b7-9ee1-182b3b07616e" name="Default Changelist" comment="" />
+    <list default="true" id="b24f15fc-08f6-42b7-9ee1-182b3b07616e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/models/categoryModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/eventModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/getAdd.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/header.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,7 +29,9 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.2" />
   <component name="ProjectId" id="1YynkEoOzIaN8NjgIjyhokPqVIy" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />

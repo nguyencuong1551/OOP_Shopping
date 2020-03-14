@@ -6,10 +6,9 @@ class categoryModel extends database
     {
         $categories = array();
         $this->select("SELECT * FROM categories");
-       while ($getCategory = $this->fetch())
-       {
-           $categories[] = $getCategory;
-       }
+        while ($getCategory = $this->fetch()) {
+            $categories[] = $getCategory;
+        }
         return $categories;
     }
 }
