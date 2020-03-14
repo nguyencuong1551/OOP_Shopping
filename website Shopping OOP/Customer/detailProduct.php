@@ -358,11 +358,12 @@ $data = new databaseShopping();
                     while ($getComment = $data->fetch())
                     {
                         $getComment_name_user = $getComment['name_user'];
+                        $getComment_id = $getComment['id'];
                         $getComment_vote = $getComment['vote'];
                         $getComment_description = $getComment['description'];
                         $getComment_created_at = $getComment['created_at'];
                         $getComment_role_user = $getComment['roleUser'];
-                        if ($getComment_role_user = $getComment['roleUser'] == "admin")
+                        if ($getComment_role_user  == "admin")
                         {
                             echo "
                     <div class=\"media text-muted pt-3\">
@@ -374,7 +375,22 @@ $data = new databaseShopping();
                          $getComment_created_at
                     </div>
                 ";
-                        }else  echo "
+                        }elseif ($_COOKIE['roleUser']  == "admin")
+                        {
+                            echo "
+                    <div class=\"media text-muted pt-3\">
+                        <svg class=\"bd-placeholder-img mr-2 rounded\" width=\"32\" height=\"32\" xmlns=\"http://www.w3.org/2000/svg\" preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\" aria-label=\"Placeholder: 32x32\"><title>Placeholder</title><rect width=\"100%\" height=\"100%\" fill=\"#6f42c1\"/><text x=\"50%\" y=\"50%\" fill=\"#6f42c1\" dy=\".3em\">32x32</text></svg>
+                        <p class=\"media-body pb-3 mb-0 small lh-125 border-bottom border-gray\">
+                            <strong class=\"d-block text-gray-dark\">
+                            $getComment_name_user &nbsp;&nbsp;&nbsp;&nbsp; <span class='text-info'>$getComment_vote</span></strong>
+                          $getComment_description
+                        </p>
+                        $getComment_created_at <br> 
+                       <a class='btn-danger' href='deleteComment.php?id=$getComment_id&idSp=$getId_product&page=$current_page'>X</a>
+                    </div>
+                ";
+                        }else{
+                            echo "
                     <div class=\"media text-muted pt-3\">
                         <svg class=\"bd-placeholder-img mr-2 rounded\" width=\"32\" height=\"32\" xmlns=\"http://www.w3.org/2000/svg\" preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\" aria-label=\"Placeholder: 32x32\"><title>Placeholder</title><rect width=\"100%\" height=\"100%\" fill=\"#6f42c1\"/><text x=\"50%\" y=\"50%\" fill=\"#6f42c1\" dy=\".3em\">32x32</text></svg>
                         <p class=\"media-body pb-3 mb-0 small lh-125 border-bottom border-gray\">
@@ -385,6 +401,8 @@ $data = new databaseShopping();
                         $getComment_created_at
                     </div>
                 ";
+                        }
+
 
                     }
                     ?>
