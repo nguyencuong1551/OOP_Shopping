@@ -59,30 +59,23 @@ $data = new databaseShopping();
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="../Admin/admin.php?controller=category&action=getCategory">
                             <span data-feather="file-text"></span>
                             Quản lý danh mục
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="../Admin/admin.php?controller=event&action=getEvent">
                             <span data-feather="file-text"></span>
                             Quản lý sự kiện
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="../Admin/admin.php?controller=bill&action=getBill">
                             <span data-feather="file-text"></span>
                             Quản lý đơn hàng
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="users"></span>
-                            Quản lý người dùng
-                        </a>
-                    </li>
-
                 </ul>
             </div>
         </nav>
