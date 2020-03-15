@@ -41,4 +41,9 @@ class eventModel extends database
         $status = $this->crud("DELETE FROM events WHERE id='$id'");
         return $status;
     }
+    public function countEvent()
+    {
+        $count = $this->count("SELECT COUNT(id) AS total FROM events");
+        return $count;
+    }
 }

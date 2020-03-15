@@ -111,4 +111,14 @@ class productController
         $productView = new productView();
         $productView->getEdit($status);
     }
+    public function searchProduct()
+    {
+        $key = $_POST['key'];
+        require_once '../models/productModel.php';
+        $productModel = new productModel();
+        $products = $productModel->searchProduct($key);
+        require_once '../views/productView.php';
+        $productView = new productView();
+        $productView->searchProduct($products,$key);
+    }
 }
