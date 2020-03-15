@@ -25,4 +25,8 @@ class productView
     {
         require '../templates/getAdd.php';
     }
+    public function searchProduct($products,$key)
+    {
+        require_once '../templates/searchProduct.php';
+    }
 }

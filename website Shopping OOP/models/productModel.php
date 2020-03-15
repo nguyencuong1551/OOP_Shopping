@@ -57,4 +57,19 @@ image2='$getProduct_image2',image3='$getProduct_image3',description='$getProduct
 id_category='$getProduct_id_category',id_event='$getProduct_id_event'WHERE id = '$getProduct_id'");
         return $status;
     }
+    public function searchProduct($key)
+    {
+        $products = array();
+        $this->select("SELECT * FROM products WHERE name like '%$key%'");
+        while ($getProduct = $this->fetch())
+        {
+            $products[] = $getProduct;
+        }
+        return $products;
+    }
+    public function countProduct()
+    {
+        $countProducts = $this->count("SELECT COUNT(id) AS total FROM products");
+        return $countProducts;
+    }
 }

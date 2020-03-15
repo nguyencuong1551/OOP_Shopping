@@ -6,10 +6,9 @@ class categoryModel extends database
     {
         $categories = array();
         $this->select("SELECT * FROM categories");
-       while ($getCategory = $this->fetch())
-       {
-           $categories[] = $getCategory;
-       }
+        while ($getCategory = $this->fetch()) {
+            $categories[] = $getCategory;
+        }
         return $categories;
     }
     public function deleteCategory($getCategory_id)
@@ -39,5 +38,10 @@ class categoryModel extends database
         $status = $this->crud
     ("UPDATE categories SET name = '$getCategory_name',id_parent='$getCategory_id_parent' WHERE id ='$getCategory_id' ");
         return $status;
+    }
+    public function countCategory()
+    {
+        $count = $this->count("SELECT COUNT(id) AS total FROM categories");
+        return $count;
     }
 }

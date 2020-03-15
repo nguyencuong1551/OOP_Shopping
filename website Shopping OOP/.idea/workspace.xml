@@ -2,10 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b24f15fc-08f6-42b7-9ee1-182b3b07616e" name="Default Changelist" comment="">
+<<<<<<< HEAD
+      <change afterPath="$PROJECT_DIR$/models/categoryModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/eventModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/getAdd.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/header.php" afterDir="false" />
+=======
       <change beforePath="$PROJECT_DIR$/models/categoryModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/categoryModel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/eventModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/eventModel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/getAdd.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/getAdd.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/header.php" afterDir="false" />
+>>>>>>> d1195a13c909709cbcff23c370f9725b23a5d06f
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,12 +65,15 @@
       <workItem from="1583939994321" duration="3078000" />
       <workItem from="1583943104282" duration="2185000" />
       <workItem from="1583945319928" duration="78000" />
+<<<<<<< HEAD
+=======
       <workItem from="1583945427600" duration="421000" />
       <workItem from="1584027393619" duration="29000" />
       <workItem from="1584072211315" duration="184000" />
       <workItem from="1584095743830" duration="973000" />
       <workItem from="1584108095527" duration="6493000" />
       <workItem from="1584198467610" duration="7821000" />
+>>>>>>> d1195a13c909709cbcff23c370f9725b23a5d06f
     </task>
     <servers />
   </component>
@@ -79,14 +89,27 @@
       <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state x="466" y="154" width="424" height="484" key="FileChooserDialogImpl/0.27.1366.741@0.27.1366.741" timestamp="1583945583930" />
+<<<<<<< HEAD
+    <state x="478" y="318" width="399" height="157" key="NewPhpFileDialog" timestamp="1583940792397">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="478" y="318" width="399" height="157" key="NewPhpFileDialog/0.27.1366.741@0.27.1366.741" timestamp="1583940792397" />
+=======
     <state x="478" y="318" width="399" height="157" key="NewPhpFileDialog" timestamp="1584204859366">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state x="478" y="318" width="399" height="157" key="NewPhpFileDialog/0.27.1366.741@0.27.1366.741" timestamp="1584204859366" />
+>>>>>>> d1195a13c909709cbcff23c370f9725b23a5d06f
     <state x="172" y="31" key="SettingsEditor" timestamp="1583943049267">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state x="172" y="31" key="SettingsEditor/0.27.1366.741@0.27.1366.741" timestamp="1583943049267" />
+<<<<<<< HEAD
+    <state x="337" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1583945427652">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="337" y="224" key="com.intellij.ide.util.TipDialog/0.27.1366.741@0.27.1366.741" timestamp="1583945427652" />
+=======
     <state x="337" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1584199095556">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
@@ -95,5 +118,6 @@
       <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state x="347" y="175" key="run.anything.popup/0.27.1366.741@0.27.1366.741" timestamp="1584113625110" />
+>>>>>>> d1195a13c909709cbcff23c370f9725b23a5d06f
   </component>
 </project>
