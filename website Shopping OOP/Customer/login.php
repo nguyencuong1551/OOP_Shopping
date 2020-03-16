@@ -28,14 +28,18 @@ session_start();
 <form class="form-signin" method="post">
     <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72"
          height="72">
+    <?php if (isset($_SESSION['status'])): ?>
+    <p class="alert alert-success"><?= $_SESSION['status']?></p>
+    <?php else: ?>
     <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <?php endif; unset($_SESSION['status'])?>
     <label for="inputEmail" class="sr-only">Email address</label>
     <input type="text" class="form-control" placeholder="Email address" name="user">
     <label for="inputPassword" class="sr-only">Password</label>
     <input type="password" class="form-control" placeholder="Password" name="pass">
     <div class="checkbox mb-3">
         <label>
-            <input type="checkbox" value="remember-me"> Remember me
+            <a href="register.php"><i>Chưa có tài khoản?</i></a>
         </label>
     </div>
     <button class="btn btn-lg btn-primary btn-block" type="submit" name="submit">Sign in</button>
