@@ -76,7 +76,7 @@ include "header.php";
                                 <br>
                                 <p>
                                     <a class=\"btn btn-outline-dark mb-1\"
-                                       href=\"detailProduct.php?id=$getId\">Thông tin &raquo</a>
+                                       href=\"detailProduct.php?id=$getId&page=1\">Thông tin &raquo</a>
                                     <a class=\"btn btn-outline-dark mb-1\"
                                        href=\"checkout.php?id=$getId\">
                                         <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"38\" height=\"23\"

@@ -1,8 +1,8 @@
 <?php
-include "../data.php";
-$data = new databaseShopping();
 session_start();
 ob_start();
+include "../data.php";
+$data = new databaseShopping();
 ?>
 <!doctype html>
 <html lang="en">
@@ -64,9 +64,9 @@ ob_start();
     }
     ?>
     <?php
-    $getUser_name = $_COOKIE['nameUser'];
-    $getUser_id = $_COOKIE['idUser'];
-    $getUser_role = $_COOKIE['roleUser'];
+    $getUser_name = $_SESSION['nameUser'];
+    $getUser_id = $_SESSION['idUser'];
+    $getUser_role = $_SESSION['roleUser'];
     $countCart = count($_SESSION['cart']);
     if(isset($getUser_id))
     {
@@ -181,10 +181,10 @@ ob_start();
                     </svg>
                 </h3>
                 <?php
-                if(isset($_COOKIE['nameUser']))
+                if(isset($_SESSION['nameUser']))
                 {
-                    $getUser_email = $_COOKIE['emailUser'];
-                    $getUser_name = $_COOKIE['nameUser'];
+                    $getUser_email = $_SESSION['emailUser'];
+                    $getUser_name = $_SESSION['nameUser'];
 
                     echo "<div class=\"mb-3\">
                     <label for=\"firstName\">Họ tên</label>

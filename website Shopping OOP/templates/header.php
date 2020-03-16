@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "../data.php";
 $data = new databaseShopping();
 ?>
@@ -31,7 +32,7 @@ $data = new databaseShopping();
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
             <?php
-            if (isset($_COOKIE['roleUser']) == 'admin')
+            if (isset($_SESSION['roleUser']) == 'admin')
             {
                 echo "<a class=\"nav-link\" href=\"../Customer/logout.php\">Sign out</a>";
             }
