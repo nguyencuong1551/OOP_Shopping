@@ -1,6 +1,7 @@
 <?php
 include "../data.php";
 $data = new databaseShopping();
+session_start();
 ?>
 
 <!doctype html>
@@ -55,16 +56,16 @@ if (isset($_POST['submit']))
             $getEmail = $getUser['email'];
             $getId = $getUser['id'];
             if ($getRole == 'admin') {
-                setcookie('nameUser', $getName, time() + 3000);
-                setcookie('roleUser', $getRole, time() + 3000);
-                setcookie('emailUser', $getEmail, time() + 3000);
-                setcookie('idUser', $getId, time() + 3000);
+                $_SESSION['idUser'] = $getId;
+                $_SESSION['nameUser'] = $getName;
+                $_SESSION['roleUser'] = $getRole;
+                $_SESSION['emailUser'] = $getEmail;
                 header("location:../Admin/admin.php?controller=home&action=countAll");
             } else {
-                setcookie('nameUser', $getName, time() + 3000);
-                setcookie('roleUser', $getRole, time() + 3000);
-                setcookie('idUser', $getId, time() + 3000);
-                setcookie('emailUser', $getEmail, time() + 3000);
+                $_SESSION['idUser'] = $getId;
+                $_SESSION['nameUser'] = $getName;
+                $_SESSION['roleUser'] = $getRole;
+                $_SESSION['emailUser'] = $getEmail;
                 header("location:index.php");
             }
         }else return $error = "<p class='alert alert-danger'>Nhập sai email hoặc password</p>";

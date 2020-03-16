@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "../data.php";
 $data = new databaseShopping();
 ?>
@@ -58,27 +59,41 @@ $data = new databaseShopping();
         $key = addslashes($_GET['key']);
         ?>
         <?php
-        $getUser_name = $_COOKIE['nameUser'];
-        $getUser_id = $_COOKIE['idUser'];
-        $getUser_role = $_COOKIE['roleUser'];
+        $getUser_name = $_SESSION['nameUser'];
+        $getUser_id = $_SESSION['idUser'];
+        $getUser_role = $_SESSION['roleUser'];
+        $countCart = count($_SESSION['cart']);
         if(isset($getUser_id))
         {
             if($getUser_role == 'admin')  // hàm isset chỉ là hàm check tồm tại chứ không phải biến;
             {
-                echo "
-             <ul class=\"navbar-nav px-3\">
+                echo " <ul class=\"navbar-nav px-3\"><li class=\"nav-item text-nowrap\">
+            <a class=\"nav-link\" href=\"pay.php\"><strong>$countCart</strong>
+            <svg xmlns=\"http:/www.w3.org/2000/svg\" width=\"38\" height=\"23\"
+                                             viewBox = \"0 0 24 24\" >
+                                            <path d = \"M10 19.5c0 .829-.672 1.5-1.5 1.5s-1.5-.671-1.5-1.5c0-.828.672-1.5 1.5-1.5s1.5.672 1.5 1.5zm3.5-1.5c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5 1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5zm1.336-5l1.977-7h-16.813l2.938 7h11.898zm4.969-10l-3.432 12h-12.597l.839 2h13.239l3.474-12h1.929l.743-2h-4.195z\" />
+                                        </svg >
+            </a>
+        </li> </ul>
+<ul class=\"navbar-nav px-3\">
             <li class=\"nav-item text-nowrap\">
-                        <a class=\"nav-link\" href=\"../Admin/admin.php\">$getUser_name</a>
+                        <a class=\"nav-link\" href=\"../Admin/admin.php?controller=home&action=countAll\">$getUser_name</a>
                     </li>
                     </ul>
-                     <ul class=\"navbar-nav px-3\">
-                    <li class=\"nav-item text-nowrap\">
-                        <a class=\"nav-link\" href=\"logout.php\">Logout</a>
-                    </li></ul>
-                    ";
+                 <ul class=\"navbar-nav px-3\">
+                <li class=\"nav-item text-nowrap\">
+                            <a class=\"nav-link\" href=\"logout.php\">Logout</a>
+                        </li></ul>";
             }else{
 
-                echo "
+                echo " <ul class=\"navbar-nav px-3\"><li class=\"nav-item text-nowrap\">
+            <a class=\"nav-link\" href=\"pay.php\"><strong>$countCart</strong>
+            <svg xmlns=\"http:/www.w3.org/2000/svg\" width=\"38\" height=\"23\"
+                                             viewBox = \"0 0 24 24\" >
+                                            <path d = \"M10 19.5c0 .829-.672 1.5-1.5 1.5s-1.5-.671-1.5-1.5c0-.828.672-1.5 1.5-1.5s1.5.672 1.5 1.5zm3.5-1.5c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5 1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5zm1.336-5l1.977-7h-16.813l2.938 7h11.898zm4.969-10l-3.432 12h-12.597l.839 2h13.239l3.474-12h1.929l.743-2h-4.195z\" />
+                                        </svg >
+            </a>
+        </li> </ul>
 <ul class=\"navbar-nav px-3\">
             <li class=\"nav-item text-nowrap\">
                         <a class=\"nav-link\" href=\"#\">$getUser_name</a>
@@ -91,6 +106,14 @@ $data = new databaseShopping();
             }
         }else {
             echo " <ul class=\"navbar-nav px-3\"><li class=\"nav-item text-nowrap\">
+            <a class=\"nav-link\" href=\"pay.php\"><strong>$countCart</strong>
+            <svg xmlns=\"http:/www.w3.org/2000/svg\" width=\"38\" height=\"23\"
+                                             viewBox = \"0 0 24 24\" >
+                                            <path d = \"M10 19.5c0 .829-.672 1.5-1.5 1.5s-1.5-.671-1.5-1.5c0-.828.672-1.5 1.5-1.5s1.5.672 1.5 1.5zm3.5-1.5c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5 1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5zm1.336-5l1.977-7h-16.813l2.938 7h11.898zm4.969-10l-3.432 12h-12.597l.839 2h13.239l3.474-12h1.929l.743-2h-4.195z\" />
+                                        </svg >
+            </a>
+        </li> </ul>
+        <ul class=\"navbar-nav px-3\"><li class=\"nav-item text-nowrap\">
             <a class=\"nav-link\" href=\"login.php\">Login</a>
         </li> </ul>";
         }
@@ -263,7 +286,7 @@ $data = new databaseShopping();
                                     <a class=\"btn btn-outline-dark mb-1\"
                                        href=\"detailProduct.php?id=$getId\">Thông tin &raquo</a>
                                     <a class=\"btn btn-outline-dark mb-1\"
-                                       href=\"#\">
+                                       href=\"checkout.php?id=$getId\">
                                         <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"38\" height=\"23\"
                                              viewBox=\"0 0 24 24\">
                                             <path d=\"M10 19.5c0 .829-.672 1.5-1.5 1.5s-1.5-.671-1.5-1.5c0-.828.672-1.5 1.5-1.5s1.5.672 1.5 1.5zm3.5-1.5c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5 1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5zm1.336-5l1.977-7h-16.813l2.938 7h11.898zm4.969-10l-3.432 12h-12.597l.839 2h13.239l3.474-12h1.929l.743-2h-4.195z\"/>

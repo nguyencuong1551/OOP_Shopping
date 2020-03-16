@@ -1,4 +1,5 @@
 <?php
+session_start();
 $controller = $_GET['controller'];
 $action = $_GET['action'];
 $controllerName = $controller .'Controller';
