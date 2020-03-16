@@ -75,7 +75,7 @@ session_start();
     {
         $data->crud("INSERT INTO users VALUES (null ,'$getUser_name','$getUser_email',null ,'$getUser_pass','user',null ,current_timestamp (),current_timestamp ())");
         $_SESSION['status'] = "Tạo tài khoản thành công";
-        header("location:index.php");
+        header("location:login.php");
     }
 ?>
 </body>
